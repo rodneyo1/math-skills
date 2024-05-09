@@ -1,2 +1,3 @@
 # math-skills
-A simple project to calculate the Average, Median, Variance and Standard Deviation of a statistical population.
+
+The purpose of this project is for you to calculate the Average,   Median,  Variance and Standard Deviation of a statistical population.
