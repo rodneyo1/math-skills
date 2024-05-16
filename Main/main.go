@@ -6,14 +6,15 @@ import (
 	"math"
 	"os"
 	"strconv"
+	"strings"
 
 	"mathskills"
 )
 
 func main() {
 
-	if len(os.Args) < 2 {
-		fmt.Println("Please provide the file name as an argument.")
+	if len(os.Args) != 2 {
+		fmt.Println("Usage: [Program Name] [File name]")
 		return
 	}
 
@@ -39,17 +40,26 @@ func main() {
 	}
 
 	// Slice to store integer values parsed from the lines
-	var linesInt []int
-	if lines== nil {
+	var linesInt []float64
+	if lines == nil {
 		fmt.Println("Error: Empty File")
 		return
 	}
 	// Convert lines to integers
-	for _, line := range lines {
-		a, err := strconv.Atoi(line)
+	for indx, line := range lines {
+		trimmedLine := strings.TrimSpace(line)
+		if trimmedLine == "" {
+			continue
+		}
+		a, err := strconv.ParseFloat(trimmedLine, 64)
 		if err != nil {
 			fmt.Println("Conversion error:", err)
 			continue
+		}
+		if a > float64(math.MaxInt) {
+			//You can encounter unrepresentable numbers even if they are within the range of math.MaxFloat64
+			fmt.Printf("Unrepresentable number encountered at line %d\n", indx+1)
+			return
 		}
 		linesInt = append(linesInt, a)
 	}

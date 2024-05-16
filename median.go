@@ -5,8 +5,11 @@ import (
 	"sort"
 )
 
-func Median(numbers []int) int {
-	sort.Ints(numbers) // Sort the numbers in ascending order
+func Median(numbers []float64) int {
+	if len(numbers) == 0 {
+		return 0
+	}
+	sort.Float64s(numbers) // Sort the numbers in ascending order
 	t := len(numbers)
 
 	// Check if the number of elements is even or odd
@@ -15,6 +18,6 @@ func Median(numbers []int) int {
 		median := v / 2
 		return int(math.Round(median))
 	} else {
-		return numbers[t/2]
+		return int(math.Round(numbers[t/2]))
 	}
 }
