@@ -20,7 +20,7 @@ func main() {
 
 	file, err := os.Open(os.Args[1])
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		fmt.Println("Error:", err)
 		return
 	}
 	defer file.Close()
@@ -67,6 +67,6 @@ func main() {
 	// print the mean, median, variance, and standard deviation
 	fmt.Println("Average:", mathskills.Mean(linesInt))
 	fmt.Println("Median:", mathskills.Median(linesInt))
-	fmt.Println("Variance:", int(math.Round(math.Sqrt(float64(mathskills.StanDiv(linesInt))))))
-	fmt.Println("Standard Deviation:", mathskills.StanDiv(linesInt))
+	fmt.Println("Variance:", mathskills.Variance(linesInt))
+	fmt.Println("Standard Deviation:", int(math.Round(math.Sqrt(float64(mathskills.Variance(linesInt))))))
 }

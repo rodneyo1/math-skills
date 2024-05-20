@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-func StanDiv(numbers []float64) int {
+func Variance(numbers []float64) int {
 	if len(numbers) == 0 {
 		return 0
 	}
@@ -17,9 +17,7 @@ func StanDiv(numbers []float64) int {
 	}
 
 	// Calculate the variation
-	variation := squaredDifferences / float64(len(numbers))
+	variance := squaredDifferences / float64(len(numbers))
+	return int(math.Round(variance))
 
-	stdDev := math.Sqrt(variation)
-
-	return int(math.Round(stdDev))
 }
